@@ -1,13 +1,14 @@
 <template>
   <div class="home">
     <div style="width: 500px; margin-bottom: 1em;">
-      <v-table :config="configTable"></v-table>
+      <v-table :config="configTable" :test="test"></v-table>
     </div>
   </div>
 </template>
 
 <script>
   import vTable from '../components/library/table'
+  import test from '../components/library/test'
   export default {
     name: 'home',
     components: {
@@ -42,7 +43,7 @@
               content: [
                 {value: 'Value1'},
                 {value: 'Value2'},
-                {value: 'Value3'}
+                {component: test}
               ]
             }
           ]

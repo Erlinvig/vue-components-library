@@ -24,7 +24,9 @@
 
 <script>
     export default {
-        props: ['config'],
+        props: {
+            config: Object
+        },
         components: {
 
         },
