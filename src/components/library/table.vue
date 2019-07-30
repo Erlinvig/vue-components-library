@@ -3,8 +3,13 @@
          :style="styleTable"
     >
         <table>
-            <tr class="row" v-for="row in config.content">
-                <td class="el" v-for="el in row.row">
+            <tr class="row"
+                v-for="row in config.rows"
+                :style="styles(row)"
+                @mouseenter="hoverEffect=true"
+                @mouseleave="hoverEffect=false"
+            >
+                <td class="el" v-for="el in row.content">
                     <div v-if="el.value">
                         <span>{{el.value}}</span>
                     </div>
@@ -24,7 +29,32 @@
 
         },
         data() {
-            return {}
+            return {
+                hoverEffect: false
+            }
+        },
+        methods: {
+            styles(row) {
+                if (row.style) {
+                    let style = {};
+
+                    function init(propertyName, propertyValue) {
+                        let property =  propertyValue ? propertyValue : null;
+                        if (property) { style[propertyName] = `${property}` }
+                    }
+
+                    row.style.forEach((property) => {
+                        init(property.name, property.value);
+                        if (property.type === 'hover') {
+
+                        }
+                    });
+
+                    return style;
+                } else {
+                    return {}
+                }
+            }
         },
 
         computed: {
@@ -52,6 +82,9 @@
                     if (padding) { style.padding = `${padding}px` }
                     if (backgroundColor) { style.backgroundColor = `${backgroundColor}` }
 
+                    // style['transition'] = '.2s';
+                    // style['box-shadow'] = '0 0 5px rgba(1,1,1,0.2)';
+
                     return style;
                 } else {
                     return null
@@ -66,7 +99,8 @@
     .table {
         /*transition: .3s ease;*/
         /*&:hover {*/
-        /*    box-shadow: 0 0 5px rgba(1,1,1,0.2);*/
+            /*background-color: #fff;*/
+            /*box-shadow: 0 0 5px rgba(1,1,1,0.2);*/
         /*}*/
     }
     table {

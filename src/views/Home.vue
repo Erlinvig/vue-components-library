@@ -23,16 +23,23 @@
             padding: 20,
             backgroundColor: '#fdfdfd'
           },
-          content: [
+          rows: [
             {
-              row: [
+              style: [
+                { name: 'backgroundColor', value: '#eee' },
+
+              ],
+              styleHover: [
+                { name: 'backgroundColor', value: '#aaa'}
+              ],
+              content: [
                 {value: 'Title1'},
                 {value: 'Title2'},
                 {value: 'Title3'}
               ]
             },
             {
-              row: [
+              content: [
                 {value: 'Value1'},
                 {value: 'Value2'},
                 {value: 'Value3'}
