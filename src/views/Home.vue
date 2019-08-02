@@ -27,16 +27,28 @@
             { name: 'borderColor', value: '#d6d6d6' },
             { name: 'borderRadius', value: '5px' },
           ],
+          styleRow: [
+            { name: 'borderBottom', value: '1px solid #d6d6d6' },
+            { name: 'height', value: '70px' }
+          ],
+          styleCell: [
+            { name: 'padding', value: '10px' },
+            { name: 'color', value: '#333' }
+          ],
           rows: [
             {
               style: [
-                { name: 'backgroundColor', value: '#eee' },
+                { name: 'backgroundColor', value: '#f4f4f4' },
               ],
+              styleCell: [
+                {name: 'font-weight', value: '600'}
+              ],
+              isStyleFromTable: false,
               styleHover: [
                 { name: 'backgroundColor', value: '#aaa'}
               ],
               cells: [
-                {value: 'Title1'},
+                {style: [{ name: 'color', value: 'green' }], value: 'Title1', isStyleFromTable: false, isStyleFromRow: false},
                 {value: 'Title2'},
                 {value: 'Title3'}
               ]
