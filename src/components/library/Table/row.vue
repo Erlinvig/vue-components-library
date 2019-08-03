@@ -1,6 +1,8 @@
 <template>
     <tr
             :style="getStyle"
+            @mouseenter="isHover = true"
+            @mouseleave="isHover = false"
     >
         <cell
                 v-for="(cell, index) in row.cells"
@@ -27,7 +29,9 @@
         },
         data() {
             return {
-                style: {}
+                isHover: false,
+                style: {},
+                styleHover: {}
             }
         },
         computed: {
@@ -43,7 +47,16 @@
                         this.style[style.name] = style.value;
                     })
                 }
-                return this.style
+
+                if (this.row.styleHover && this.isHover) {
+                    this.row.styleHover.forEach(style => {
+                        this.styleHover[style.name] = style.value;
+                    })
+                }
+
+                let styleHover = this.isHover ? this.styleHover : {};
+
+                return [this.style, styleHover]
             }
         }
     }

@@ -2,6 +2,8 @@
     <div>
         <div
                 :style="getStyle"
+                @mouseenter="isHover = true"
+                @mouseleave="isHover = false"
         >
             <table>
                 <row
@@ -27,9 +29,12 @@
         },
         data() {
             return {
-                style: Object
+                style: {},
+                styleHover: {},
+                isHover: false
             }
         },
+        methods: {},
         computed: {
             getStyle() {
                 if (this.config.style) {
@@ -38,8 +43,16 @@
                     })
                 }
 
-                return this.style
-            }
+                if (this.config.styleHover && this.isHover) {
+                    this.config.styleHover.forEach(style => {
+                        this.styleHover[style.name] = style.value;
+                    })
+                }
+
+                let styleHover = this.isHover ? this.styleHover : {};
+
+                return [this.style, styleHover]
+            },
         }
     }
 </script>

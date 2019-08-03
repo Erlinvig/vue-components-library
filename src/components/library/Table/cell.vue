@@ -1,12 +1,17 @@
 <template>
     <td
             :style="getStyle"
+            @mouseenter="isHover = true"
+            @mouseleave="isHover = false"
     >
         <div v-if="cell.value">
             <div>{{cell.value}}</div>
         </div>
         <div v-if="cell.component">
             <div :is="cell.component"> </div>
+        </div>
+        <div v-if="cell.template">
+            <div v-html="cell.template"></div>
         </div>
     </td>
 </template>
@@ -20,7 +25,9 @@
         },
         data() {
             return {
-                style: {}
+                isHover: false,
+                style: {},
+                styleHover: {}
             }
         },
         computed: {
@@ -43,7 +50,15 @@
                     })
                 }
 
-                return this.style
+                if (this.cell.styleHover && this.isHover) {
+                    this.cell.styleHover.forEach(style => {
+                        this.styleHover[style.name] = style.value;
+                    })
+                }
+
+                let styleHover = this.isHover ? this.styleHover : {};
+
+                return [this.style, styleHover]
             }
         }
     }
