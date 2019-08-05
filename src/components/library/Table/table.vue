@@ -10,7 +10,9 @@
                         v-for="(row, index) in config.rows"
                         :key="index"
                         :styleRowFromTable="config.styleRow"
+                        :styleRowFromTableHover="config.styleRowHover"
                         :styleCellFromTable="config.styleCell"
+                        :styleCellFromTableHover="config.styleCellHover"
                         :row="row">
                 </row>
             </table>

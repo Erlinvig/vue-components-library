@@ -21,7 +21,9 @@
         props: {
             cell: Object,
             styleCellFromTable: Array,
-            styleCellFromRow: Array
+            styleCellFromRow: Array,
+            styleCellFromTableHover: Array,
+            styleCellFromRowHover: Array
         },
         data() {
             return {
@@ -47,6 +49,18 @@
                 if (this.cell.style) {
                     this.cell.style.forEach(style => {
                         this.style[style.name] = style.value;
+                    })
+                }
+
+                if (this.styleCellFromTableHover && this.isHover) {
+                    this.styleCellFromTableHover.forEach(style => {
+                        this.styleHover[style.name] = style.value;
+                    })
+                }
+
+                if (this.styleCellFromRowHover && this.isHover) {
+                    this.styleCellFromRowHover.forEach(style => {
+                        this.styleHover[style.name] = style.value;
                     })
                 }
 

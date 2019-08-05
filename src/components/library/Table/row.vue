@@ -9,6 +9,8 @@
                 :key="index"
                 :styleCellFromTable="styleCellFromTable"
                 :styleCellFromRow="row.styleCell"
+                :styleCellFromTableHover="styleCellFromTableHover"
+                :styleCellFromRowHover="row.styleCellHover"
                 :cell="cell"
         >
         </cell>
@@ -25,7 +27,9 @@
         props: {
             row: Object,
             styleRowFromTable: Array,
-            styleCellFromTable: Array
+            styleRowFromTableHover: Array,
+            styleCellFromTable: Array,
+            styleCellFromTableHover: Array
         },
         data() {
             return {
@@ -45,6 +49,12 @@
                 if (this.row.style) {
                     this.row.style.forEach(style => {
                         this.style[style.name] = style.value;
+                    })
+                }
+
+                if (this.styleRowFromTableHover && this.isHover) {
+                    this.styleRowFromTableHover.forEach(style => {
+                        this.styleHover[style.name] = style.value;
                     })
                 }
 

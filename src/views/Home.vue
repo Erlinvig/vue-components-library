@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div style="width: 500px; margin-bottom: 1em;">
+    <div style="width: 50%; margin-bottom: 1em;">
       <v-table :config="configTable"></v-table>
     </div>
   </div>
@@ -32,9 +32,15 @@
             { name: 'borderBottom', value: '1px solid #d6d6d6' },
             { name: 'height', value: '70px' }
           ],
+          styleRowHover: [
+              { name: 'backgroundColor', value: '#d6d6d6' },
+          ],
           styleCell: [
             { name: 'padding', value: '10px' },
             { name: 'color', value: '#333' }
+          ],
+          styleCellHover: [
+              { name: 'backgroundColor', value: '#d0f4e3' },
           ],
           styleHover: [
             { name: 'box-shadow', value: '0 0 5px rgba(0,0,0,0.3)' }
@@ -46,6 +52,9 @@
               ],
               styleCell: [
                 {name: 'font-weight', value: '600'}
+              ],
+              styleCellHover: [
+                { name: 'backgroundColor', value: '#afccbf' },
               ],
               isStyleFromTable: false,
               cells: [
